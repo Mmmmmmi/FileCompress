@@ -61,7 +61,7 @@ void HuffmanCompress::WriteHead(FILE* fOut, const std::string& filepath)
 	fwrite(headInfo.c_str(), 1, headInfo.size(), fOut);
 }
 
-void HuffmanCompress::Compress(const string& filepath)
+std::string HuffmanCompress::Compress(const string& filepath)
 {
 	FILE* fIn = fopen(filepath.c_str(), "rb");
 	if (fIn == nullptr) {
@@ -156,6 +156,7 @@ void HuffmanCompress::Compress(const string& filepath)
 	//关闭文件流 释放树
 	fclose(fIn);
 	fclose(fOut);
+	return filename;
 }
 
 void HuffmanCompress::GetLine(FILE* fIn, std::string& inbuffer)
@@ -170,7 +171,7 @@ void HuffmanCompress::GetLine(FILE* fIn, std::string& inbuffer)
 	}
 }
 
-void HuffmanCompress::UnCompress(const std::string & filepath)
+std::string HuffmanCompress::UnCompress(const std::string & filepath)
 {
 	//解压缩，先读取文件前面的信息
 	if (filepath.substr(filepath.rfind('.')) != ".hip") {
@@ -257,6 +258,7 @@ void HuffmanCompress::UnCompress(const std::string & filepath)
 	//关闭文件流 释放树
 	fclose(fIn);
 	fclose(fOut);
+	return filename;
 }
 
 HuffmanCompress::~HuffmanCompress()

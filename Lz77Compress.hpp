@@ -71,7 +71,7 @@ public:
 		}
 	}
 
-	void Compress(const std::string& fileName)
+	std::string Compress(const std::string& fileName)
 	{
 		//创建文件读对象
 		FILE* fIn = fopen(fileName.c_str(), "rb");
@@ -87,7 +87,7 @@ public:
 		ULL fileSize = ftell(fIn);		//求出当前文件指针距离文件开始的字节数
 		if (fileSize <= 3) {
 			fclose(fIn);
-			return;
+			return 0;
 		}
 		
 		//重新将指针放到文件首
@@ -266,6 +266,7 @@ public:
 
 		//删除创建的零时文件		
 		remove("flag.temp");
+		return compressFileName;
 	}
 
 	void GetMaxMatch(USH & machtListHead, USH & maxDistant, UCH & maxMatch)
@@ -350,7 +351,7 @@ public:
 		}
 	}
 
-	void UnCompress(const std::string & fileName)
+	std::string UnCompress(const std::string & fileName)
 	{
 		//先判断是不是对应的压缩文件
 		std::string fileSuffix = fileName.substr(fileName.rfind('.'));
@@ -459,6 +460,7 @@ public:
 			}
 			flagLeftCount--;
 		}
+		return unCompressFileName;
 	}
 
 	~Lz77Compress()		//析构函数

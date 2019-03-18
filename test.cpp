@@ -6,10 +6,10 @@ using namespace std;
 int main()
 {
 
-#if 0
+#if 1
 	HuffmanCompress fc;
-	fc.Compress("13.png");
-	fc.UnCompress("1.hip");
+	fc.Compress("3.png");
+	fc.UnCompress("3.hip");
 #else
 	Lz77Compress lc;
 	lc.Compress("3.png");

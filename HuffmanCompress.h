@@ -9,6 +9,9 @@
 #include <string>
 #include <vector>
 
+#define HUFFMANSIZE (1024 * 1024)		//表示一次读取多少数据
+
+
 struct CharInfo
 {
 	bool operator>(const CharInfo& c) const;

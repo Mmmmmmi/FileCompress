@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
 
 #if 1
 	HuffmanCompress fc;
-	fc.Compress("3.png");
-	fc.UnCompress("3.hip");
+	fc.Compress("1234.png");
+	fc.UnCompress("1234.hip");
 #else
 	Lz77Compress lc;
 	lc.Compress("4.png");

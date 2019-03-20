@@ -70,9 +70,9 @@ std::string HuffmanCompress::Compress(const string& filepath)
 	}
 	while (1) {
 		//1. 遍历文件，获取每个字符出现的次数
-		unsigned char tempbuf[1024] = { 0 };
+		unsigned char *tempbuf = new unsigned char [HUFFMANSIZE];
 		//从文件中读取待压缩信息
-        size_t rdSize = fread(tempbuf, 1, 1024, fIn);
+        size_t rdSize = fread(tempbuf, 1, HUFFMANSIZE, fIn);
 
 		if (rdSize == 0) {
 			//如果读到的信息为0 说明读完了
@@ -96,7 +96,7 @@ std::string HuffmanCompress::Compress(const string& filepath)
 	huffmantree.CreateHuffmanTree(_charInfo);
 	  
 	//得到字符的编码
-	huffmantree.GetHUffmanCode(_charInfo);
+	huffmantree.GetHuffmanCode(_charInfo);
 
 
 	//打开压缩文件
@@ -120,9 +120,11 @@ std::string HuffmanCompress::Compress(const string& filepath)
 
 	//压缩
 	while (1) {
-		unsigned char inbuffer[1024] = { 0 };
+		unsigned char* inbuffer = new unsigned char[HUFFMANSIZE];
+		unsigned char* outbuffer = new unsigned char[HUFFMANSIZE];
+		size_t outbufferpos = 0;
 		//char outBuf[1024] = { 0 };
-		size_t rdSize = fread(inbuffer, 1, 1024, fIn);
+		size_t rdSize = fread(inbuffer, 1, HUFFMANSIZE, fIn);
 		if (rdSize == 0) {
 			break;
 		}
@@ -140,12 +142,18 @@ std::string HuffmanCompress::Compress(const string& filepath)
 				}
 				j++;
 				if (leftCount == 8) {
-					fputc(code, fOut);
+					/*fputc(code, fOut);*/
+					outbuffer[outbufferpos++] = code;
+					if (outbufferpos == HUFFMANSIZE) {
+						fwrite(outbuffer, outbufferpos, 1, fOut);
+						outbufferpos = 0;
+					}
 					leftCount = 0;
 					code = 0;
 				}
 			}
 		}
+		fwrite(outbuffer, outbufferpos, 1, fOut);
 	}
 
 	if (leftCount > 0 && leftCount <= 8) {

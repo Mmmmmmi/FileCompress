@@ -83,7 +83,7 @@ public:
 		pqhuffman.pop();
 	}
 
-	void GetHUffmanCode(std::vector<Weight>& info)
+	void GetHuffmanCode(std::vector<Weight>& info)
 	{
 		GetCode(_root, info);
 	}

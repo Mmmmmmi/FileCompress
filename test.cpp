@@ -28,14 +28,14 @@ void UnCompress(string& filePath)
 int main(int argc, char* argv[])
 {
 
-#if 1
+#if 0
 	HuffmanCompress fc;
 	fc.Compress("1234.png");
 	fc.UnCompress("1234.hip");
 #else
 	Lz77Compress lc;
-	lc.Compress("4.png");
-	lc.UnCompress("4.lzp");
+	lc.Compress("1234.png");
+	lc.UnCompress("1234.lzp");
 #endif
 
 

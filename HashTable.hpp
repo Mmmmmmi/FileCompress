@@ -74,7 +74,7 @@ public:
 			if (_prev[i] >= WSIZE)
 				_prev[i] -= WSIZE;
 			else
-				_prev[i] = 0;
+				_prev[i] = -1;
 		}
 		//¸üÐÂhead
 		for (size_t i = 0; i < HASH_SIZE; i++)
@@ -82,7 +82,7 @@ public:
 			if (_head[i] >= WSIZE)
 				_head[i] -= WSIZE;
 			else
-				_head[i] = 0;
+				_head[i] = -1;
 		}
 	}
 

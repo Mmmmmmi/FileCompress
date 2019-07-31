@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <queue>
+#include <iostream>
+#include "HuffmanCompress.h"
 
 
 template <class Weight>

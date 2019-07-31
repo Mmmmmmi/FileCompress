@@ -1,8 +1,8 @@
-#include "HuffmanCompress.h"
+//#include "HuffmanCompress.h"
 #include "Lz77Compress.hpp"
-
 #include <iostream>
 using namespace std;
+/*
 
 void Compress(string& filePath)
 {
@@ -24,7 +24,7 @@ void UnCompress(string& filePath)
 
 }
 
-
+*/
 int main(int argc, char* argv[])
 {
 

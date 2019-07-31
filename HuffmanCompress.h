@@ -1,10 +1,6 @@
 #ifndef __HUFFMANCOMPRESS_H__
 #define __HUFFMANCOMPRESS_H__
 
-
-
-
-
 #include <iostream>
 #include <string>
 #include <vector>

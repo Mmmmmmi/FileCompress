@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <assert.h>
+#include <iostream>
 #include "HashTable.hpp"
 
 static const USH MIN_LOOKAHEAD = MAX_MATCH + 1;				//×îÉÙÊ£ÓàÎ´Æ¥Åä×Ö·û
